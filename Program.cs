@@ -8,8 +8,14 @@ class Program
   static void Main()
   {
 
+    Console.Write("Input file name: ");
+    string fileName = Console.ReadLine();
 
-    string jsonString = File.ReadAllText("test.json");
+    if (fileName.IndexOf(".json") == -1) {
+      fileName = fileName + ".json";
+    }
+
+    string jsonString = File.ReadAllText(fileName);
     var o = JObject.Parse(jsonString);
 
 
@@ -22,6 +28,8 @@ class Program
         Console.WriteLine("{0,-20} || {1,15}", name, i);
       }
     }
+
+    Console.ReadKey();
 
   }
 
